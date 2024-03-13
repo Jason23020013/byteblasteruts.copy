@@ -13,7 +13,7 @@ body {
 .chatbox{
 
 	width: 800px;
-	min-width: 490px;
+	min-width: 500px;
 	height: 1000px;
 	background: #fff;
 	padding: 35px;
@@ -23,20 +23,20 @@ body {
 }
 
 .chatlogs {
-	padding: 10px;
+	padding: 12px;
 	width: 100%;
-	height: 450px;
+	height: 500px;
 	overflow-x: hidden;
 	overflow-y: scroll;
 }
 
 .chatlogs::-webkit-scrollbar{
 
-	width: 10px;
+	width: 12px;
 
 }
 .chatlogs::-webkit-scrollbar-thumb {
-	border-radius: 5px;
+	border-radius: 6px;
 	background: rgba(0,0,0,.1);
 }
 
@@ -63,7 +63,7 @@ body {
 		width: 100%;
 }
 .chat .chat-message {
-	width: 70%;
+	width: 75%;
 	padding: 15px;
 	margin: 5px 10px 0;
 	border-radius: 10px;
