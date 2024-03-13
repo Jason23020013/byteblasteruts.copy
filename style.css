@@ -12,13 +12,13 @@ body {
 
 .chatbox{
 
-	width: 800px;
+	width: 600px;
 	min-width: 500px;
-	height: 1000px;
+	height: 800px;
 	background: #fff;
-	padding: 35px;
-	margin: 25px auto;
-	box-shadow: 0 4px #ccc;
+	padding: 30px;
+	margin: 20px auto;
+	box-shadow: 0 3px #ccc;
 
 }
 
@@ -32,11 +32,11 @@ body {
 
 .chatlogs::-webkit-scrollbar{
 
-	width: 12px;
+	width: 11px;
 
 }
 .chatlogs::-webkit-scrollbar-thumb {
-	border-radius: 6px;
+	border-radius: 5px;
 	background: rgba(0,0,0,.1);
 }
 
@@ -45,7 +45,7 @@ body {
 	display: flex;
 	flex-flow: : row wrap;
 	align-items: flex-start;
-	margin-bottom: 10px;
+	margin-bottom: 9px;
 
 
 }
