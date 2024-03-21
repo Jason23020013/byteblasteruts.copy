@@ -6,12 +6,22 @@
 }
 
 body {
-	background: #fff;
-
+	background-color: rgb(9,9,90);
+	justufy-context: center;
+	align-items: center;
+}
+.top
+{
+	max-width:95%;
+	padding: 7px;
+	background-color: rgb(255, 255, 255);
+	border-radois: 7px;
+	box-shadow: 0px 0px 10px rgba(216,207,307,0.1);
+	text-aligh: center;
 }
 
-.chatbox{
-
+.chatbox
+{
 	width: 550px;
 	min-width: 400px;
 	height: 650px;
