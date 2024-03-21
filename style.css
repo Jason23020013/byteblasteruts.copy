@@ -1,13 +1,13 @@
 *{
 	margin: 3;
 	padding: 2;
-	font-family: tahoma, sans-serif;
+	font-family: Arial, sans-serif;
 	box-sizing: border-box;
 }
 
 body {
 	background-color: rgb(9,9,90);
-	justufy-context: center;
+	justify-content: center;
 	align-items: center;
 }
 .top
@@ -15,9 +15,9 @@ body {
 	max-width:95%;
 	padding: 7px;
 	background-color: rgb(255, 255, 255);
-	border-radois: 7px;
+	border-radius: 7px;
 	box-shadow: 0px 0px 10px rgba(216,207,307,0.1);
-	text-aligh: center;
+	text-align: center;
 }
 
 .chatbox
@@ -25,7 +25,7 @@ body {
 	width: 550px;
 	min-width: 400px;
 	height: 650px;
-	box-sozomg:border-box;
+	box-sizing:border-box;
 	border:none;
 	background-color: white;
 	padding: 25px;
