@@ -25,13 +25,21 @@ body {
 	width: 550px;
 	min-width: 400px;
 	height: 650px;
-	background-color: black;
+	box-sozomg:border-box;
+	border:none;
+	background-color: white;
 	padding: 25px;
 	margin: 20px auto;
 	box-shadow: 0 3px #ccc;
-
+	font-size: 18px;
+	border-radius: 5px;
 }
-
+.chat_box::placeholder
+{
+	position: absolute;
+	tp: 10px; /* Adjust the top value as needed */
+	left: 10px；/* Adjust the top value as needed */
+	color: rgba(13, 13, 13, 0.5)；/* Optionally adjust the color and opacity */
 .chatlogs {
 	padding: 11px;
 	width: 100%;
