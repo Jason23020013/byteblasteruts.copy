@@ -30,10 +30,10 @@ body {
 	margin: 20px auto;
 	box-shadow: 0 3px #ccc;
 }
-.chat_box::placeholder
+.chat_log
 {
 
-	padding: 11px;
+	padding: 10px;
 	width: 100%;
 	height: 500px;
 	overflow-x: hidden;
