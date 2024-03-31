@@ -3,15 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image</title>
-</head>
-    <header>
-        <img src=" "C:\Users\User\Downloads\UTS Logo.jpg"\
-	width ="80px" 
-	height ="100px"
-	    
-    </header>
-	<style>
+    <title>Combined HTML</title>
+    <style>
         /* CSS for centering the image */
         img#image-A {
             position: fixed;
@@ -20,51 +13,134 @@
             transform: translateX(-50%); 
         }
     </style>
-	 <img id="image-A" src="https://github.com/Darensii/byteblasteruts.com/assets/163117234/9b035562-5627-466a-9fbb-8fbe4f2130e7" width="120px" height="120px">
-</body>
-</html>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Design chat box</title>
-	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="chatbox">
+    <header>
+        <img src="C:\Users\User\Downloads\UTS Logo.jpg" width="80px" height="100px">
+    </header>
 
-		<div class="chatlogs">
+    <img id="image-A" src="https://github.com/Darensii/byteblasteruts.com/assets/163117234/9b035562-5627-466a-9fbb-8fbe4f2130e7" width="120px" height="120px">
 
-			<div class="chatbot">
-				<div class="user-photo"><img src="img/123.jpg"></div>
-				<p class="chat-message">Welcome to UTCalander!!</p>
-	</div>
-	<div class="chat self">
-		<div class="user-photo"><img src="img/124.jpg"></div>
-		<p class="chat-message">What is UTCalander??</p>
-	</div>
-	
-	<div class="chatbot">
-				<div class="user-photo"><img src="img/123.jpg"></div>
-				<p class="chat-message">UTCalander is a.....</p>
-	</div>
-	<div class="chat self">
-		<div class="user-photo"><img src="img/124.jpg"></div>
-		<p class="chat-message">Oh Well,Nice to know it!!</p>
-	</div>
-	
-</div>
+    <div class="chatbox">
+        <div class="chatlogs">
+            <div class="chatbot">
+                <div class="user-photo"><img src="img/123.jpg"></div>
+                <p class="chat-message">Welcome to UTCalander!!</p>
+            </div>
+            <div class="chat self">
+                <div class="user-photo"><img src="img/124.jpg"></div>
+                <p class="chat-message">What is UTCalander??</p>
+            </div>
+            <div class="chatbot">
+                <div class="user-photo"><img src="img/123.jpg"></div>
+                <p class="chat-message">UTCalander is a.....</p>
+            </div>
+            <div class="chat self">
+                <div class="user-photo"><img src="img/124.jpg"></div>
+                <p class="chat-message">Oh Well, Nice to know it!!</p>
+            </div>
+        </div>
 
+        <div class="chat-form">
+            <form id="questionForm">
+                <textarea id="question" name="question"></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </div>
+    </div>
 
-<div class="chat-form">
-	<textarea></textarea>
-	<button>Send</button>
-</div>
+    <style>
+        /* CSS for chatbox */
+        .chatbox {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 300px;
+            background: #f9f9f9;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .chatlogs {
+            padding: 10px;
+            height: 200px;
+            overflow-y: scroll;
+        }
+
+        .chat {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .user-photo {
+            width: 50px;
+        }
+
+        .chat-message {
+            background: #f2f2f2;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 0 10px;
+            word-break: break-all;
+        }
+
+        .chat-form {
+            display: flex;
+            padding: 10px;
+            background: #fff;
+            border-top: 1px solid #ccc;
+        }
+
+        .chat-form textarea {
+            flex: 1;
+            resize: none;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .chat-form button {
+            padding: 5px 10px;
+            margin-left: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background: #007bff;
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', async (event) => {
+            event.preventDefault(); // Prevent default form submission
+            const question = document.getElementById('question').value;
+
+            try {
+                const response = await fetch('/ask', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ question })
+                });
+
+                const data = await response.json();
+                // Assuming there's a div with id 'chatlogs' to display chat messages
+                const chatlogs = document.querySelector('.chatlogs');
+                const chatMessage = document.createElement('div');
+                chatMessage.classList.add('chat');
+                chatMessage.innerHTML = `
+                    <div class="user-photo"><img src="img/123.jpg"></div>
+                    <p class="chat-message">${data.answer}</p>
+                `;
+                chatlogs.appendChild(chatMessage);
+            } catch (error) {
+                console.error('Error:', error);
+                // Handle error
+            }
+        });
+    </script>
 </body>
-<style>
-body {
-  background-image: url('https://github.com/Darensii/byteblasteruts.com/assets/162389957/32a08f60-4546-4b49-9c13-9f76561a90fa');
-}
-</style>
-</html>
 </html>
