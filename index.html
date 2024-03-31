@@ -55,16 +55,41 @@
 	
 </div>
 
-
+<!-- HTML for asking a question -->
 <div class="chat-form">
-	<textarea></textarea>
-	<button>Send</button>
+    <form id="questionForm">
+        <textarea id="question" placeholder="Ask a question..."></textarea>
+        <button type="submit">Send</button>
+    </form>
+    <div id="answer"></div>
 </div>
+
+<script>
+    document.getElementById('questionForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+        const question = document.getElementById('question').value;
+        
+        try {
+            const response = await fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ question })
+            });
+
+            const data = await response.json();
+            document.getElementById('answer').textContent = data.answer;
+        } catch (error) {
+            console.error('Error:', error);
+            document.getElementById('answer').textContent = 'An error occurred. Please try again later.';
+        }
+    });
+</script>
 </body>
 <style>
 body {
   background-image: url('https://github.com/Darensii/byteblasteruts.com/assets/162389957/32a08f60-4546-4b49-9c13-9f76561a90fa');
 }
 </style>
-</html>
 </html>
