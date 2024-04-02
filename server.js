@@ -1,40 +1,25 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const axios = require('axios');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cross-Origin Example</title>
+</head>
+<body>
+    <h1>跨源请求示例</h1>
+    <div id="content"></div>
 
-const app = express();
-const PORT = 3000;
-
-app.use(bodyParser.json());
-
-// Handle POST requests to '/ask'
-app.post('/ask', async (req, res) => {
-    try {
-        const { question } = req.body;
-
-        // Ensure the question is not empty
-        if (!question) {
-            return res.status(400).json({ error: 'Question is required' });
-        }
-
-        // Call Gemini AI Studio API
-        const apiKey = 'YOUR_API_KEY';
-        const apiUrl = 'https://api.gemini.ai/studio/v1';
-        const response = await axios.post(`${apiUrl}/chat`, {
-            input_text: question,
-            key: apiKey
-        });
-
-        const answer = response.data.output_text;
-        res.json({ answer });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
-
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
-
-
+    <script>
+        // 使用 JavaScript 发起跨源请求
+        const targetUrl = 'https://api.gemini.ai/studio/v1'; // 替换为您要请求的目标 URL
+        fetch(targetUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').textContent = data;
+            })
+            .catch(error => {
+                console.error('请求失败：', error);
+            });
+    </script>
+</body>
+</html>
