@@ -3,29 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image</title>
+    <title>Design chat box</title>
 </head>
-    <header>
-        <img src=" "C:\Users\User\Downloads\UTS Logo.jpg"\
-	width ="80px" 
-	height ="100px"
-	    
-    </header>
-	<style>
-        /* CSS for centering the image */
-        img#image-A {
-            position: fixed;
-            top: 5%; 
-            left: 50%; 
-            transform: translateX(-50%); 
-        }
-    </style>
-	 <img id="image-A" src="https://github.com/Darensii/byteblasteruts.com/assets/163117234/9b035562-5627-466a-9fbb-8fbe4f2130e7" width="120px" height="120px">
-</body>
-</html>
+<body>
+    <h1>跨源请求示例</h1>
+    <div id="content"></div>
 
-<!DOCTYPE html>
-<html>
+    <script>
+        const targetUrl = 'https://api.gemini.ai/studio/v1'; 
+        fetch(targetUrl)
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('content').textContent = data;
+            })
+            .catch(error => {
+                console.error('请求失败：', error);
+            });
+    </script>
+    <header>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0HICab4m2y9na2Rt93QYzsexRBJZmYmK5liQnr_BR99BRcEMeo5EE553Fu4BrVN38QVk&usqp=CAU">
 <head>
 	<title>Design chat box</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
