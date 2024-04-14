@@ -1,36 +1,47 @@
+const{GoogleGenerativeAI} = require('@google/generative-ai')
+require('dotenv').config()
+
+
+
+const model = genAI.getGenerativeModel({model:"gemini-pro"})
+
+
+
 const express = require('express');
-const bodyParser = require('body-parser'); // 引入body-parser模块
-const axios = require('axios'); // 用于发送HTTP请求的库
+const bodyParser = require('body-parser');
+const fetch = require('node-fetch'); // For making API calls to Gemini AI
 
 const app = express();
-const PORT = 3000; // 后端服务器端口
+const port = process.env.PORT || 3000; // Use environment variable for port or default to 3000
 
-// 使用body-parser中间件来解析req.body
+// Replace with your actual Gemini API key
+const apiKey = 'AIzaSyC2kBnw20EYMqeCi6dI6xzX2qOzFegwYyo';
+
 app.use(bodyParser.json());
 
-// 处理前端发送的问题的路由
 app.post('/ask', async (req, res) => {
-    try {
-        const { question } = req.body; // 前端发送的问题，请确保你的前端能够将问题发送到这个路由
-        const apiKey = 'sk-TaNogOVTyxveAlR1qrYqBMQmNMRpLuzQ08HxRJ2gKja2YBw0'; // 请替换为你的Google Gemini AI Studio API密钥
-        const apiUrl = 'https://api.chatanywhere.com.cn/v1/models'; // Google Gemini AI Studio API地址
+  const question = req.body.question;
 
-        // 发送POST请求给Google Gemini AI Studio API
-        const response = await axios.post(`${apiUrl}/chat`, {
-            input_text: question,
-            key: apiKey
-        });
+  try {
+    const response = await fetch('https://generativelanguage.googleapis.com/v1/models/gemini-pro', { // Replace with Gemini AI endpoint
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: question,
+        // Adjust additional parameters as needed based on Gemini AI documentation
+      })
+    });
 
-        const answer = response.data.output_text; // 从API响应中获取回答
-
-        // 将回答发送回前端，请确保你的前端能够处理这个回答
-        res.json({ answer });
-    } catch (error) {
-        console.error('Error:', error);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
+    const data = await response.json();
+    const answer = data.results[0].content; // Assuming response contains answer in results[0].content
+    res.json({ answer });
+  } catch (error) {
+    console.error('Error fetching response from Gemini AI:', error);
+    res.status(500).json({ answer: 'An error occurred. Please try again later.' });
+  }
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+app.listen(port, () => console.log(`Server listening on port ${port}`));
